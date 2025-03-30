@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="shortcut icon" type="image/x-icon" href=".Assets/Favicon.ico"> -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- <script defer src="js/index.js"></script> -->
     <title>Couch Potato Assistant</title>
 </head>
+
+<header>
+    <h1>Couch Potato Assistant</h1>
+</header>
+<!-- Be sure to hide API_KEY in env file before pushing -->
 <body>
-    
+
+    <section class="cover">
+        <img class="potatoImg" src="./assets/couchPotato.webp">
+    </section>
+
+    <form class="searchField">
+        <input id="userInput" type="text" placeholder="Type Here To Search!">
+        <button id="searchBtn">Search</button>
+    </form>
+
+    <main>
+        <h2>How To</h2>
+        <p class="usageParagraph">
+        Have you ever had that debate with someone that a certain actor was in a movie? Well, I've the solution for you! 
+        To get started, type in the name of a movie in the search box above. Once you hit the search button, the API will return a result based off of what you've searched. 
+        I'll have the results displayed below and see about keeping a history or recently searched movies.
+        </p>
+
+        <section id="results">
+
+        </section>
+    </main>
+
+    <script src="js/index.js"></script>
 </body>
 </html>
