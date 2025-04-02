@@ -48,14 +48,22 @@ h2 {
     align-items: center;
     color:white;
     font-size: 24px;
-    margin: 0px 300px 0px 300px;
+    padding: 5%;
+}
+
+.resultsContainer {
+    display: flex;
+    justify-content: space-around;
+    max-height: 800px;
+    max-width: 100%;
 }
 
 .results {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(180deg, #730303, transparent);
     color: white;
+    padding-bottom: 30px;
 }
 
 .poster {
@@ -63,4 +71,28 @@ h2 {
     justify-content: center;
     height: 300px;
     width: 250px;
+}
+
+.posterAndTitle {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.detailsContainer {
+    display: flex;
+}
+
+.movieDetails {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    width: 40%;
+}
+
+.details {
+    display: flex;
+    justify-content: flex-end;
 }
