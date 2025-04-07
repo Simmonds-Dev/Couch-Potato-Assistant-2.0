@@ -1,31 +1,44 @@
 const userInput = document.getElementById('userInput');
 const searchBtn = document.getElementById('searchBtn');
-// const modal = document.getElementById('modal');
-// const modalMessage = document.getElementById('modalMessage');
-// const closeModal = document.getElementById('closeModal');
+const errorModal = document.getElementById('errorModal');
+const errorPrompt = document.getElementById('errorPrompt');
+const closeModalBtn = document.getElementById('closeModal');
 const resultsContainer = document.getElementById('resultsContainer');
-
-// function showModal(message) {
-//     modalMessage.textContent = message;
-//     modal.style.display = "block";
-// }
-
-// Ensure button does not trigger form submission
 const form = document.querySelector('.searchField');
+
+// Modal logic
+function showModal(message) {
+    errorPrompt.textContent = message;
+    errorModal.classList.add('show');
+}
+
+function hideModal() {
+    errorModal.classList.remove('show');
+}
+
+// Close when clicking the button
+closeModalBtn.addEventListener('click', hideModal);
+
+// Close when clicking outside modal content
+window.addEventListener('click', (event) => {
+    if (event.target === errorModal) {
+        hideModal();
+    }
+});
+
+// Form submission
 form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent page reload
+    event.preventDefault();
     const query = userInput.value.trim();
-    if (query === "") {
-        showModal("Oops! Please ensure to fill out the input field before searching.")
-    } {
+
+    if (query.length === 0) {
+        showModal("Oops! Please enter the name of a show or movie.");
+    } else {
         fetchMovie(query);
     }
 });
 
-// closeModal.addEventListener("click", () => {
-//     modal.style.display = "none";
-// });
-
+// Fetch logic
 async function fetchMovie(query) {
     const API_KEY = '8b30258'; 
     const url = `https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(query)}`;
@@ -53,7 +66,7 @@ function displayMovie(data) {
             <img class="poster" src="${data.Poster !== 'N/A' ? data.Poster : './assets/placeholder.jpg'}" alt="${data.Title} Poster">
         </aside>
         <aside class="movieDetails">
-            <section class"details">
+            <section class="details">
                 <p><strong>Genre:</strong> ${data.Genre}</p>
                 <p><strong>Actors:</strong> ${data.Actors}</p>
                 <p><strong>Plot:</strong> ${data.Plot}</p>
